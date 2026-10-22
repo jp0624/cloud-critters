@@ -1,0 +1,5 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';import {initial,discoveries,missions,reactions} from '../src/weather.js';
+test('initial weather earns no badges',()=>assert.equal(discoveries.filter(d=>d.test(initial)).length,0));
+test('all six missions have reachable distinct weather outcomes',()=>{const solutions=[{sun:65,rain:50,snow:0,wind:15},{sun:65,wind:75,rain:0,snow:0},{sun:65,rain:35,snow:0,wind:0},{sun:20,snow:80,rain:0,wind:0},{sun:0,rain:85,wind:65,snow:0},{sun:80,snow:55,rain:0,wind:0}];missions.forEach((m,i)=>assert.ok(discoveries.find(d=>d.id===m.id).test(solutions[i]),m.id));});
+test('weather changes produce meaningful creature reactions',()=>{assert.match(reactions({...initial,rain:90}).puddle,/SPLISH/);assert.match(reactions({...initial,snow:90}).pip,/snow cones/);assert.match(reactions({...initial,wind:90}).moss,/Kite/);});
+test('rainbow requires rain and enough sun with little snow',()=>{const d=discoveries[0];assert.equal(d.test({...initial,rain:34}),false);assert.equal(d.test({...initial,rain:35}),true);assert.equal(d.test({...initial,rain:35,snow:30}),false);});

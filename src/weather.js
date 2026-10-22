@@ -1,0 +1,11 @@
+export const initial={sun:65,wind:15,rain:0,snow:0};
+export const discoveries=[
+{id:'rainbow',icon:'🌈',name:'Rainbow hello',clue:'Sunshine + rain',test:w=>w.sun>=45&&w.rain>=35&&w.snow<30},
+{id:'garden',icon:'🌼',name:'Happy garden',clue:'Gentle sun + a drink',test:w=>w.sun>=45&&w.rain>=20&&w.rain<=60&&w.snow<20},
+{id:'kite',icon:'🪁',name:'Kite weather',clue:'Breezy, bright skies',test:w=>w.wind>=60&&w.sun>=40&&w.rain<30&&w.snow<30},
+{id:'snow',icon:'⛄',name:'Snow day',clue:'A proper snowy sky',test:w=>w.snow>=65&&w.sun<40},
+{id:'storm',icon:'🌧',name:'Puddle party',clue:'Lots of rain + wind',test:w=>w.rain>=70&&w.wind>=50},
+{id:'sparkle',icon:'✨',name:'Snow sparkles',clue:'Snowflakes in sunshine',test:w=>w.snow>=40&&w.sun>=65}
+];
+export const missions=[{id:'rainbow',title:'Paint the sky a rainbow',clue:'Puddle heard sunshine and raindrops make a colourful team.',hint:'Try sunshine 65 and rain 50, with snow below 30.'},{id:'kite',title:'Help Moss fly a kite',clue:'Find a bright, breezy day without too much rain or snow.',hint:'Try wind 75, sunshine 65, rain 0 and snow 0.'},{id:'garden',title:'Wake up Pip’s garden',clue:'Flowers need a drink and a warm little glow. Go easy on the rain!',hint:'Try sunshine 65, rain 35 and snow 0.'},{id:'snow',title:'Make a fluffy snow day',clue:'Turn down the sunshine and give the meadow a snowy blanket.',hint:'Try snow 80 and sunshine 20.'},{id:'storm',title:'Throw a puddle party',clue:'Puddle wants big splashes and a blustery sky.',hint:'Try rain 85 and wind 65.'},{id:'sparkle',title:'Find the glittering snow',clue:'Can the sun peek through while snowflakes fall?',hint:'Try snow 55 and sunshine 80.'}];
+export function reactions(w){return {pip:w.snow>40?'My toes are snow cones!':w.rain>65?'That’s a LOT of watering!':w.rain>=20&&w.sun>=45?'Grow, little flowers, grow!':w.sun>75?'Sun hat? Yes please!':w.wind>60?'Hold onto your leaves!':'A perfect day to sprout!',moss:w.wind>=60?'Wheeee! Kite time!':w.snow>45?'I’m a snowball with feet!':w.rain>50?'Fluff + rain = extra fluff.':'Cloud watching club?',puddle:w.rain>=50?'SPLISH. SPLASH. AGAIN!':w.snow>40?'Tiny frozen cousins!':w.sun>75?'A little shade, please!':w.rain>0?'Every drop is a friend!':'Got any puddles?'};}
